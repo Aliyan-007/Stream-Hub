@@ -137,8 +137,6 @@ export default function MovieDetailPage() {
             src={MOVIE_SERVERS[selectedServer].url(movie.id)}
             className="video-player"
             allowFullScreen={true}
-            webkitAllowFullScreen={true}
-            mozAllowFullScreen={true}
             allow="autoplay; fullscreen; picture-in-picture"
             referrerPolicy="no-referrer"
             title={`Watch ${movie.title}`}

@@ -164,8 +164,6 @@ export default function SeriesDetailPage() {
             src={SERIES_SERVERS[selectedServer].url(series.id, selectedSeason, selectedEpisode)}
             className="video-player"
             allowFullScreen={true}
-            webkitAllowFullScreen={true}
-            mozAllowFullScreen={true}
             allow="autoplay; fullscreen; picture-in-picture"
             referrerPolicy="no-referrer"
             title={`Watch ${series.title}`}
