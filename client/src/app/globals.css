@@ -41,7 +41,6 @@ body {
   background-attachment: fixed;
   color: var(--text);
   font-family: var(--font-b);
-  overflow-x: hidden;
   min-height: 100vh;
 }
 
@@ -50,7 +49,6 @@ main {
   padding: 2.5rem 2.5rem;
   max-width: 1480px;
   margin: 0 auto;
-  animation: pageFade 0.5s var(--ease-out);
 }
 
 /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
@@ -433,7 +431,6 @@ button:hover::after, .btn:hover::after { opacity: 1; }
 
 .video-container {
   position: relative; width: 100%; padding-top: 56.25%;
-  border-radius: 16px; overflow: hidden;
   margin-top: 2rem; box-shadow: var(--sh-lg);
   border: 1px solid var(--border);
 }
