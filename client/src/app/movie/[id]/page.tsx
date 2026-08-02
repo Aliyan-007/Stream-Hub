@@ -15,6 +15,7 @@ export default function MovieDetailPage() {
   const [selectedServer, setSelectedServer] = useState<number>(0);
 
   const MOVIE_SERVERS = [
+    { name: 'VidLink (Multi-Sub)', url: (id: string) => `https://vidlink.pro/movie/${id}` },
     { name: 'VidSrc (HD)', url: (id: string) => `https://vidsrc.net/embed/movie?tmdb=${id}` },
     { name: 'VidSrc ME (HD)', url: (id: string) => `https://vidsrc.me/embed/movie?tmdb=${id}` },
     { name: 'EmbedSU (HD)', url: (id: string) => `https://embed.su/embed/movie/${id}` },

@@ -12,6 +12,7 @@ export default function SeriesDetailPage() {
   const [selectedServer, setSelectedServer] = useState<number>(0);
 
   const SERIES_SERVERS = [
+    { name: 'VidLink (Multi-Sub)', url: (id: string, s: number, e: number) => `https://vidlink.pro/tv/${id}/${s}/${e}` },
     { name: 'VidSrc (HD)', url: (id: string, s: number, e: number) => `https://vidsrc.net/embed/tv?tmdb=${id}&season=${s}&episode=${e}` },
     { name: 'VidSrc ME (HD)', url: (id: string, s: number, e: number) => `https://vidsrc.me/embed/tv?tmdb=${id}&season=${s}&episode=${e}` },
     { name: 'EmbedSU (HD)', url: (id: string, s: number, e: number) => `https://embed.su/embed/tv/${id}/${s}/${e}` },
