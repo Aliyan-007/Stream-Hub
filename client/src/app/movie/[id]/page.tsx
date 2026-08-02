@@ -139,7 +139,8 @@ export default function MovieDetailPage() {
           <iframe
             src={MOVIE_SERVERS[selectedServer].url(movie.id)}
             className="video-player"
-            allowFullScreen={true}
+            allowFullScreen
+            {...({ webkitallowfullscreen: "true", mozallowfullscreen: "true" } as any)}
             allow="autoplay; fullscreen; picture-in-picture"
             referrerPolicy="origin"
             title={`Watch ${movie.title}`}
