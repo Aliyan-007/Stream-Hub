@@ -9,18 +9,16 @@ export default function SeriesDetailPage() {
   const [series, setSeries] = useState<any>(null);
   const [selectedSeason, setSelectedSeason] = useState(1);
   const [selectedEpisode, setSelectedEpisode] = useState(1);
-  const [selectedServer, setSelectedServer] = useState<number>(1);
+  const [selectedServer, setSelectedServer] = useState<number>(0);
 
   const SERIES_SERVERS = [
-    { name: 'VidSrc PRO (HD)', url: (id: string, s: number, e: number) => `https://vidsrc.pro/embed/tv/${id}/${s}/${e}` },
-    { name: 'VidSrc VIP (HD)', url: (id: string, s: number, e: number) => `https://vidsrc.vip/embed/tv/${id}/${s}/${e}` },
-    { name: 'SmashyStream (HD)', url: (id: string, s: number, e: number) => `https://player.smashy.stream/tv/${id}?s=${s}&e=${e}` },
-    { name: 'VidBinge (HD)', url: (id: string, s: number, e: number) => `https://vidbinge.dev/embed/tv/${id}/${s}/${e}` },
-    { name: 'VidSrc (Fast)', url: (id: string, s: number, e: number) => `https://vidsrc.net/embed/tv?tmdb=${id}&season=${s}&episode=${e}` },
+    { name: 'VidSrc (HD)', url: (id: string, s: number, e: number) => `https://vidsrc.net/embed/tv?tmdb=${id}&season=${s}&episode=${e}` },
+    { name: 'VidSrc ME (HD)', url: (id: string, s: number, e: number) => `https://vidsrc.me/embed/tv?tmdb=${id}&season=${s}&episode=${e}` },
     { name: 'EmbedSU (HD)', url: (id: string, s: number, e: number) => `https://embed.su/embed/tv/${id}/${s}/${e}` },
-    { name: 'MultiEmbed', url: (id: string, s: number, e: number) => `https://multiembed.mov/?video_id=${id}&tmdb=1&s=${s}&e=${e}` },
-    { name: 'AutoEmbed', url: (id: string, s: number, e: number) => `https://player.autoembed.cc/embed/tv/${id}/${s}/${e}` },
-    { name: 'VidLink', url: (id: string, s: number, e: number) => `https://vidlink.pro/tv/${id}/${s}/${e}` },
+    { name: 'SuperEmbed (HD)', url: (id: string, s: number, e: number) => `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1&s=${s}&e=${e}` },
+    { name: 'MultiEmbed (HD)', url: (id: string, s: number, e: number) => `https://multiembed.mov/?video_id=${id}&tmdb=1&s=${s}&e=${e}` },
+    { name: 'AutoEmbed (HD)', url: (id: string, s: number, e: number) => `https://player.autoembed.cc/embed/tv/${id}/${s}/${e}` },
+    { name: '2Embed (HD)', url: (id: string, s: number, e: number) => `https://www.2embed.cc/embedtv/${id}&s=${s}&e=${e}` },
   ];
 
   useEffect(() => {
@@ -170,7 +168,7 @@ export default function SeriesDetailPage() {
             className="video-player"
             allowFullScreen={true}
             allow="autoplay; fullscreen; picture-in-picture"
-            referrerPolicy="no-referrer"
+            referrerPolicy="origin"
             title={`Watch ${series.title}`}
             style={{ border: 'none', width: '100%', height: '100%', minHeight: '500px', borderRadius: '12px' }}
           />

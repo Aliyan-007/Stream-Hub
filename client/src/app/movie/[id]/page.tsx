@@ -12,18 +12,16 @@ export default function MovieDetailPage() {
   const [rating, setRating] = useState<number | null>(null);
   const [average, setAverage] = useState<number>(0);
   const [hoveredStar, setHoveredStar] = useState<number | null>(null);
-  const [selectedServer, setSelectedServer] = useState<number>(1);
+  const [selectedServer, setSelectedServer] = useState<number>(0);
 
   const MOVIE_SERVERS = [
-    { name: 'VidSrc PRO (HD)', url: (id: string) => `https://vidsrc.pro/embed/movie/${id}` },
-    { name: 'VidSrc VIP (HD)', url: (id: string) => `https://vidsrc.vip/embed/movie/${id}` },
-    { name: 'SmashyStream (HD)', url: (id: string) => `https://player.smashy.stream/movie/${id}` },
-    { name: 'VidBinge (HD)', url: (id: string) => `https://vidbinge.dev/embed/movie/${id}` },
-    { name: 'VidSrc (Fast)', url: (id: string) => `https://vidsrc.net/embed/movie?tmdb=${id}` },
+    { name: 'VidSrc (HD)', url: (id: string) => `https://vidsrc.net/embed/movie?tmdb=${id}` },
+    { name: 'VidSrc ME (HD)', url: (id: string) => `https://vidsrc.me/embed/movie?tmdb=${id}` },
     { name: 'EmbedSU (HD)', url: (id: string) => `https://embed.su/embed/movie/${id}` },
-    { name: 'MultiEmbed', url: (id: string) => `https://multiembed.mov/?video_id=${id}&tmdb=1` },
-    { name: 'AutoEmbed', url: (id: string) => `https://player.autoembed.cc/embed/movie/${id}` },
-    { name: 'VidLink', url: (id: string) => `https://vidlink.pro/movie/${id}` },
+    { name: 'SuperEmbed (HD)', url: (id: string) => `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1` },
+    { name: 'MultiEmbed (HD)', url: (id: string) => `https://multiembed.mov/?video_id=${id}&tmdb=1` },
+    { name: 'AutoEmbed (HD)', url: (id: string) => `https://player.autoembed.cc/embed/movie/${id}` },
+    { name: '2Embed (HD)', url: (id: string) => `https://www.2embed.cc/embed/${id}` },
   ];
 
   useEffect(() => {
@@ -143,7 +141,7 @@ export default function MovieDetailPage() {
             className="video-player"
             allowFullScreen={true}
             allow="autoplay; fullscreen; picture-in-picture"
-            referrerPolicy="no-referrer"
+            referrerPolicy="origin"
             title={`Watch ${movie.title}`}
             style={{ border: 'none', width: '100%', height: '100%', minHeight: '500px', borderRadius: '12px' }}
           />
