@@ -19,7 +19,7 @@ export default function WatchlistPage() {
     }
     try {
       const [allMovies, watchlist] = await Promise.all([getMovies(), getWatchlist()]);
-      setMovies(allMovies);
+      setMovies(allMovies.results);
       setWatchlistIds(watchlist.items);
     } catch (err) {
       console.error(err);

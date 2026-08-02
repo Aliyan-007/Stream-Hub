@@ -15,10 +15,15 @@ export default function MovieDetailPage() {
   const [selectedServer, setSelectedServer] = useState<number>(1);
 
   const MOVIE_SERVERS = [
+    { name: 'VidSrc PRO (HD)', url: (id: string) => `https://vidsrc.pro/embed/movie/${id}` },
+    { name: 'VidSrc VIP (HD)', url: (id: string) => `https://vidsrc.vip/embed/movie/${id}` },
+    { name: 'SmashyStream (HD)', url: (id: string) => `https://player.smashy.stream/movie/${id}` },
+    { name: 'VidBinge (HD)', url: (id: string) => `https://vidbinge.dev/embed/movie/${id}` },
+    { name: 'VidSrc (Fast)', url: (id: string) => `https://vidsrc.net/embed/movie?tmdb=${id}` },
+    { name: 'EmbedSU (HD)', url: (id: string) => `https://embed.su/embed/movie/${id}` },
+    { name: 'MultiEmbed', url: (id: string) => `https://multiembed.mov/?video_id=${id}&tmdb=1` },
+    { name: 'AutoEmbed', url: (id: string) => `https://player.autoembed.cc/embed/movie/${id}` },
     { name: 'VidLink', url: (id: string) => `https://vidlink.pro/movie/${id}` },
-    { name: 'VidSrc.me', url: (id: string) => `https://vidsrc.me/embed/movie?tmdb=${id}` },
-    { name: 'VidSrc.to', url: (id: string) => `https://vidsrc.to/embed/movie/${id}` },
-    { name: 'SmashyStream', url: (id: string) => `https://embed.smashystream.com/playere.php?tmdb=${id}` },
   ];
 
   useEffect(() => {

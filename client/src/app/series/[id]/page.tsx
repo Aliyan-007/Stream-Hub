@@ -12,10 +12,15 @@ export default function SeriesDetailPage() {
   const [selectedServer, setSelectedServer] = useState<number>(1);
 
   const SERIES_SERVERS = [
+    { name: 'VidSrc PRO (HD)', url: (id: string, s: number, e: number) => `https://vidsrc.pro/embed/tv/${id}/${s}/${e}` },
+    { name: 'VidSrc VIP (HD)', url: (id: string, s: number, e: number) => `https://vidsrc.vip/embed/tv/${id}/${s}/${e}` },
+    { name: 'SmashyStream (HD)', url: (id: string, s: number, e: number) => `https://player.smashy.stream/tv/${id}?s=${s}&e=${e}` },
+    { name: 'VidBinge (HD)', url: (id: string, s: number, e: number) => `https://vidbinge.dev/embed/tv/${id}/${s}/${e}` },
+    { name: 'VidSrc (Fast)', url: (id: string, s: number, e: number) => `https://vidsrc.net/embed/tv?tmdb=${id}&season=${s}&episode=${e}` },
+    { name: 'EmbedSU (HD)', url: (id: string, s: number, e: number) => `https://embed.su/embed/tv/${id}/${s}/${e}` },
+    { name: 'MultiEmbed', url: (id: string, s: number, e: number) => `https://multiembed.mov/?video_id=${id}&tmdb=1&s=${s}&e=${e}` },
+    { name: 'AutoEmbed', url: (id: string, s: number, e: number) => `https://player.autoembed.cc/embed/tv/${id}/${s}/${e}` },
     { name: 'VidLink', url: (id: string, s: number, e: number) => `https://vidlink.pro/tv/${id}/${s}/${e}` },
-    { name: 'VidSrc.me', url: (id: string, s: number, e: number) => `https://vidsrc.me/embed/tv?tmdb=${id}&season=${s}&episode=${e}` },
-    { name: 'VidSrc.to', url: (id: string, s: number, e: number) => `https://vidsrc.to/embed/tv/${id}/${s}/${e}` },
-    { name: 'SmashyStream', url: (id: string, s: number, e: number) => `https://embed.smashystream.com/playere.php?tmdb=${id}&season=${s}&episode=${e}` },
   ];
 
   useEffect(() => {
