@@ -166,9 +166,9 @@ export default function SeriesDetailPage() {
           <iframe
             src={SERIES_SERVERS[selectedServer].url(series.id, selectedSeason, selectedEpisode)}
             className="video-player"
-            allowFullScreen
-            {...({ webkitallowfullscreen: "true", mozallowfullscreen: "true" } as any)}
+            allowFullScreen={true}
             allow="autoplay; fullscreen; picture-in-picture"
+            {...({ allowfullscreen: "true", webkitallowfullscreen: "true", mozallowfullscreen: "true" } as any)}
             referrerPolicy="origin"
             title={`Watch ${series.title}`}
             style={{ border: 'none', width: '100%', height: '100%', minHeight: '500px', borderRadius: '12px' }}
