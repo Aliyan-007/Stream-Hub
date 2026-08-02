@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { getSeriesById } from '@/lib/api';
 
@@ -10,6 +10,14 @@ export default function SeriesDetailPage() {
   const [selectedSeason, setSelectedSeason] = useState(1);
   const [selectedEpisode, setSelectedEpisode] = useState(1);
   const [selectedServer, setSelectedServer] = useState<number>(0);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const handleFullscreen = () => {
+    const el = iframeRef.current as any;
+    if (!el) return;
+    const fn = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+    if (fn) fn.call(el);
+  };
 
   const SERIES_SERVERS = [
     { name: 'VidLink (Multi-Sub)', url: (id: string, s: number, e: number) => `https://vidlink.pro/tv/${id}/${s}/${e}` },
@@ -163,8 +171,9 @@ export default function SeriesDetailPage() {
             ))}
           </select>
         </div>
-        <div className="video-container" style={{ marginTop: 0 }}>
+        <div className="video-container" style={{ marginTop: 0, position: 'relative' }}>
           <iframe
+            ref={iframeRef}
             src={SERIES_SERVERS[selectedServer].url(series.id, selectedSeason, selectedEpisode)}
             className="video-player"
             allowFullScreen={true}
@@ -174,6 +183,23 @@ export default function SeriesDetailPage() {
             title={`Watch ${series.title}`}
             style={{ border: 'none', width: '100%', height: '100%', minHeight: '500px', borderRadius: '12px' }}
           />
+          <button
+            onClick={handleFullscreen}
+            title="Fullscreen"
+            style={{
+              position: 'absolute', bottom: '12px', right: '12px',
+              background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(6px)',
+              border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px',
+              color: '#fff', cursor: 'pointer', padding: '8px 10px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              zIndex: 10, transition: 'background 0.2s',
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+              <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+            </svg>
+          </button>
         </div>
       </div>
     </main>
